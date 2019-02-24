@@ -1,0 +1,20 @@
+{
+  "name": "katana",
+  "version": "1.0.0",
+  "description": "this is my app",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "Daniel",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
+}

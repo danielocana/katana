@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: katana
+server:
+  port: ${PORT:5000}
