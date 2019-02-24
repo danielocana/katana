@@ -24,4 +24,9 @@ public class SomeController {
     public List<String> hellov2() {
         return Arrays.asList("three", "four", "more...");
     }
+
+    @GetMapping("/api/v3/hello")
+    public List<String> hellov3() {
+        return Arrays.asList("five", "six", "more...");
+    }
 }
