@@ -16,7 +16,12 @@ public class SomeController {
     }
 
     @GetMapping("/api/v1/hello")
-    public List<String> hellov2() {
+    public List<String> hellov1() {
         return Arrays.asList("one", "two", "more...");
+    }
+
+    @GetMapping("/api/v2/hello")
+    public List<String> hellov2() {
+        return Arrays.asList("three", "four", "more...");
     }
 }
