@@ -27,3 +27,10 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+build.doFirst {
+	webpack
+}
+
+task webpack(type: Exec) {
+	commandLine "$projectDir\\frontend\\node_modules\\.bin\\webpack.cmd", "$projectDir\\frontend\\src\\index.js", "$projectDir\\src\\main\\resources\\static\\main.js"
+}
