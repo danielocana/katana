@@ -1,3 +1,4 @@
+import org.apache.tools.ant.taskdefs.condition.Os
 buildscript {
 	ext {
 		springBootVersion = '2.0.4.RELEASE'
@@ -23,11 +24,27 @@ repositories {
 	mavenCentral()
 }
 
-dependencies {
-	compile('org.springframework.boot:spring-boot-starter-web')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+task NPMInstall(type: Exec) {
+	if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+		println 'Running NPM install on windows'
+		workingDir = "$projectDir\\frontend"
+		commandLine "npm.cmd", "install"
+	}else {
+		println 'Running NPM install'
+		workingDir = "$projectDir\\frontend"
+		commandLine "npm", "install"
+	}
 }
 
 task webpack(type: Exec) {
+	println 'Running webpack build'
 	commandLine "$projectDir\\frontend\\node_modules\\.bin\\webpack.cmd", "$projectDir\\frontend\\src\\index.js", "$projectDir\\src\\main\\resources\\static\\main.js"
+}
+
+webpack.dependsOn(NPMInstall)
+build.dependsOn(webpack)
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
